@@ -1,0 +1,211 @@
+diff --git a/frontend/src/components/contents/presentations/Editor.jsx b/frontend/src/components/contents/presentations/Editor.jsx
+index 93ddfd7..4b66599 100644
+--- a/frontend/src/components/contents/presentations/Editor.jsx
++++ b/frontend/src/components/contents/presentations/Editor.jsx
+@@ -160,7 +160,7 @@ const Editor = ({
+                   size="lg"
+                 />
+               </button> */}
+-              <button className={command ? 'btn show-eraser' : 'btn hide-eraser'} type="button" id="eraser" onDoubleClick={() => clearCommand()}>
++              <button className={command ? 'btn show-eraser' : 'btn hide-eraser'} type="button" aria-label="eraser" id="eraser" onDoubleClick={() => clearCommand()}>
+                 <FontAwesomeIcon
+                   icon={faTimesCircle}
+                   size="1x"
+@@ -169,6 +169,7 @@ const Editor = ({
+               <button
+                 className="frame-head-button btn btn-link"
+                 type="button"
++                aria-label="aria1"
+                 onClick={() => onClick()}
+                 title="Run Query"
+               >
+@@ -177,6 +178,7 @@ const Editor = ({
+               <button
+                 className="frame-head-button btn btn-link"
+                 type="button"
++                aria-label="aria2"
+                 onClick={() => {
+                   toggleMenu('home');
+                   /*
+@@ -196,6 +198,7 @@ const Editor = ({
+               <button
+                 className="frame-head-button btn btn-link"
+                 type="button"
++                aria-label="aria3"
+                 onClick={() => setLabel()}
+                 title="Run Query"
+               >
+diff --git a/frontend/src/components/cytoscape/CypherResultCytoscapeFooter.jsx b/frontend/src/components/cytoscape/CypherResultCytoscapeFooter.jsx
+index c0e39db..73bee3c 100644
+--- a/frontend/src/components/cytoscape/CypherResultCytoscapeFooter.jsx
++++ b/frontend/src/components/cytoscape/CypherResultCytoscapeFooter.jsx
+@@ -93,6 +93,7 @@ const CypherResultCytoscapeFooter = ({
+           <button
+             type="button"
+             className="frame-head-button btn btn-link px-3"
++            aria-label="aria1"
+             onClick={() => setFooterExpanded(!footerExpanded)}
+           >
+             <FontAwesomeIcon
+@@ -168,6 +169,7 @@ const CypherResultCytoscapeFooter = ({
+               sizeChange(footerData.data.type, footerData.data.label, nodeSize)]}
+             key={uuid()}
+             type="button"
++            aria-label="aria2"
+             className={`btn sizeSelector node ${footerData.data.size >= nodeSize ? ' selectedSize ' : ''}`}
+             style={{ width: `${size}px`, height: `${size}px` }}
+           >
+@@ -184,6 +186,7 @@ const CypherResultCytoscapeFooter = ({
+               sizeChange(footerData.data.type, footerData.data.label, edgeSize)]}
+             key={uuid()}
+             type="button"
++            aria-label="aria3"
+             className={`btn sizeSelector edge ${footerData.data.size >= edgeSize ? ' selectedSize ' : ''}`}
+             style={{ width: `${size + 18}px`, height: `${size}px` }}
+           >
+@@ -210,6 +213,7 @@ const CypherResultCytoscapeFooter = ({
+                 colorChange(footerData.data.type, footerData.data.label, color)]}
+               key={uuid()}
+               type="button"
++              aria-label="aria4"
+               className={`btn colorSelector ${footerData.data.backgroundColor === color.color ? ' selectedColor ' : ''}`}
+               style={{ backgroundColor: color.color }}
+             >
+@@ -225,6 +229,7 @@ const CypherResultCytoscapeFooter = ({
+                 colorChange(footerData.data.type, footerData.data.label, color)]}
+               key={uuid()}
+               type="button"
++              aria-label="aria5"
+               className={`btn colorSelector ${footerData.data.backgroundColor === color.color ? ' selectedColor ' : ''}`}
+               style={{ backgroundColor: color.color }}
+             >
+@@ -265,6 +270,7 @@ const CypherResultCytoscapeFooter = ({
+                     captionChange(footerData.data.type, footerData.data.label, caption)]}
+                   key={uuid()}
+                   type="button"
++                  aria-label="aria6"
+                   className={`btn captionSelector ${selectedCaption === caption ? ' btn-secondary ' : ' btn-outline-dark '}`}
+                 >
+                   <strong>
+@@ -280,6 +286,7 @@ const CypherResultCytoscapeFooter = ({
+                   captionChange(footerData.data.type, footerData.data.label, null)]}
+                 key={uuid()}
+                 type="button"
++                aria-label="aria8"
+                 className={`btn captionSelector ${selectedCaption === null ? ' btn-secondary ' : ' btn-outline-dark '}`}
+               >
+                 <strong>
+@@ -291,6 +298,7 @@ const CypherResultCytoscapeFooter = ({
+           </div>
+           <button
+             type="button"
++            aria-label="aria9"
+             className="frame-head-button btn btn-link px-3"
+             onClick={() => setFooterExpanded(!footerExpanded)}
+           >
+diff --git a/frontend/src/components/cytoscape/CypherResultCytoscapeLegend.jsx b/frontend/src/components/cytoscape/CypherResultCytoscapeLegend.jsx
+index 0d62e89..ed8785a 100644
+--- a/frontend/src/components/cytoscape/CypherResultCytoscapeLegend.jsx
++++ b/frontend/src/components/cytoscape/CypherResultCytoscapeLegend.jsx
+@@ -180,6 +180,7 @@ class CypherResultCytoscapeLegend extends Component {
+           <button
+             type="button"
+             className="frame-head-button btn btn-link px-3"
++            aria-label="aria1"
+             onClick={() => this.setState({ nodeLegendExpanded: !nodeLegendExpanded })}
+           >
+             <FontAwesomeIcon
+@@ -195,6 +196,7 @@ class CypherResultCytoscapeLegend extends Component {
+           <button
+             type="button"
+             className="frame-head-button btn btn-link px-3"
++            aria-label="aria2"
+             onClick={() => this.setState({ edgeLegendExpanded: !edgeLegendExpanded })}
+           >
+             <FontAwesomeIcon
+diff --git a/frontend/src/components/sidebar/presentations/SidebarHome.jsx b/frontend/src/components/sidebar/presentations/SidebarHome.jsx
+index a9d75d3..3ed3742 100644
+--- a/frontend/src/components/sidebar/presentations/SidebarHome.jsx
++++ b/frontend/src/components/sidebar/presentations/SidebarHome.jsx
+@@ -429,6 +429,7 @@ const SidebarHome = ({
+             <button
+               className="frame-head-button refresh_button btn btn-link"
+               type="button"
++              aria-label="aria1"
+               onClick={() => refreshSidebarHome()}
+             >
+               <FontAwesomeIcon
+@@ -446,6 +447,7 @@ const SidebarHome = ({
+             <button
+               className="frame-head-button close_session btn btn-link"
+               type="button"
++              aria-label="aria2"
+               color="#142B80"
+               onClick={() => confirm({
+                 title: 'Are you sure you want to close this window?',
+diff --git a/package-lock.json b/package-lock.json
+index 16da95b..e7d642e 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -10,6 +10,12 @@
+       "license": "Apache-2.0",
+       "dependencies": {
+         "npm-run-all": "^4.1.5"
++      },
++      "devDependencies": {
++        "prettier": "3.2.5"
++      },
++      "engines": {
++        "node": "^14.16.0"
+       }
+     },
+     "node_modules/ansi-styles": {
+@@ -651,6 +657,21 @@
+         "node": ">=4"
+       }
+     },
++    "node_modules/prettier": {
++      "version": "3.2.5",
++      "resolved": "https://registry.npmjs.org/prettier/-/prettier-3.2.5.tgz",
++      "integrity": "sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==",
++      "dev": true,
++      "bin": {
++        "prettier": "bin/prettier.cjs"
++      },
++      "engines": {
++        "node": ">=14"
++      },
++      "funding": {
++        "url": "https://github.com/prettier/prettier?sponsor=1"
++      }
++    },
+     "node_modules/read-pkg": {
+       "version": "3.0.0",
+       "resolved": "https://registry.npmjs.org/read-pkg/-/read-pkg-3.0.0.tgz",
+@@ -1362,6 +1383,12 @@
+       "resolved": "https://registry.npmjs.org/pify/-/pify-3.0.0.tgz",
+       "integrity": "sha512-C3FsVNH1udSEX48gGX1xfvwTWfsYWj5U+8/uK15BGzIGrKoUpghX8hWZwa/OFnakBiiVNmBvemTJR5mcy7iPcg=="
+     },
++    "prettier": {
++      "version": "3.2.5",
++      "resolved": "https://registry.npmjs.org/prettier/-/prettier-3.2.5.tgz",
++      "integrity": "sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==",
++      "dev": true
++    },
+     "read-pkg": {
+       "version": "3.0.0",
+       "resolved": "https://registry.npmjs.org/read-pkg/-/read-pkg-3.0.0.tgz",
+diff --git a/package.json b/package.json
+index 85d78fc..7e42eb4 100644
+--- a/package.json
++++ b/package.json
+@@ -25,5 +25,8 @@
+       "type": "Apache-2.0",
+       "url": "https://www.apache.org/licenses/LICENSE-2.0"
+     }
+-  ]
++  ],
++  "devDependencies": {
++    "prettier": "3.2.5"
++  }
+ }
